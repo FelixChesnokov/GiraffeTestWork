@@ -1,0 +1,35 @@
+.login_form {
+    width: 250px !important;
+    margin: auto;
+    margin-top: 30px; 
+    margin-bottom: 30px; 
+}
+
+.post_form{
+    width: 450px !important;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.add_post_link{
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.all_posts{
+    margin-bottom: 30px;
+    font-size: 17px;
+}
+
+.posts_list{
+    font-size: 20px;
+}
+
+.post{
+    width: 650px;
+    border: 1px solid #eee;
+    text-align: left;
+    padding: 15px;
+    margin: auto;
+}
