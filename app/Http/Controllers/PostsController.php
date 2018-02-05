@@ -45,21 +45,22 @@ class PostsController extends Controller
     public function editPost($id)
     {
         $post = Post::find($id);
-        if(!$post){
+        $nameAuth = Auth::user()->name;
+        if(!$post || $post->author != $nameAuth){
             return redirect()->route('welcome');
         }
         return view('edit',['post'=> $post]);
     }
 
-    public function editPostRequest(Request $request, $id)
+    public function editPostRequest(PostsRequest $request, $id)
     {
+        $nameAuth = Auth::user()->name;
         $post = Post::find($id);
-        if($post) {
+        if($post && $post->author == $nameAuth) {
             $post = $post->editPost($request);
         } else {
             return redirect()->route('welcome');
         }
-        $nameAuth = Auth::user()->name;
         return view('view')->with(['id',$post->id, 'post'=>$post, 'nameAuth'=>$nameAuth]);
     }
 
@@ -79,8 +80,11 @@ class PostsController extends Controller
     {
         if($request->ajax()){
             $id = $request->input('id');
-            $post = new Post();
-            $post->where('id',$id)->delete();
+            $post = Post::find($id);
+            $nameAuth = Auth::user()->name;
+            if($nameAuth == $post->author){
+                $post->delete();
+            }
         }
         return redirect()->route('welcome');
     }
