@@ -76,15 +76,23 @@ class PostsController extends Controller
         }
     }
 
-    public function deletePost(Request $request)
+    public function deletePost($id)
     {
-        if($request->ajax()){
-            $id = $request->input('id');
-            $post = Post::find($id);
-            $nameAuth = Auth::user()->name;
-            if($nameAuth == $post->author){
-                $post->delete();
-            }
+//        if($request->ajax()){
+//            $id = $request->input('id');
+//            $post = Post::find($id);
+//            $nameAuth = Auth::user()->name;
+//            if($nameAuth == $post->author){
+//                $post->delete();
+//            }
+//        }
+
+        $post = Post::find($id);
+        $nameAuth = Auth::user()->name;
+        if($post && $nameAuth == $post->author){
+            $post->delete();
+        } else {
+            return redirect()->route('welcome');
         }
         return redirect()->route('welcome');
     }

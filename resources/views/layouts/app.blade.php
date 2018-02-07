@@ -85,26 +85,26 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script>
-        $(function(){
-            $(".delete").on('click', function () {
-                if(confirm("Do you want to delete this post?")) {
-                    var id = $(this).attr("rel");
-                    $.ajax({
-                        type: "DELETE",
-                        url: "{!! route('delete') !!}",
-                        data: {_token:"{{csrf_token()}}", id:id},
-                        complete: function() {
-                            alert("Deleted");
-                            location.reload();
-                        }
-                    });
-                }else{
-                    alertify.error("Not deleted");
-                }
-            });
-        });
-    </script>
+    {{--<script>--}}
+        {{--$(function(){--}}
+            {{--$(".delete").on('click', function () {--}}
+                {{--if(confirm("Do you want to delete this post?")) {--}}
+                    {{--var id = $(this).attr("rel");--}}
+                    {{--$.ajax({--}}
+                        {{--type: "DELETE",--}}
+                        {{--url: "{!! route('delete') !!}",--}}
+                        {{--data: {_token:"{{csrf_token()}}", id:id},--}}
+                        {{--complete: function() {--}}
+                            {{--alert("Deleted");--}}
+                            {{--location.reload();--}}
+                        {{--}--}}
+                    {{--});--}}
+                {{--}else{--}}
+                    {{--alertify.error("Not deleted");--}}
+                {{--}--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

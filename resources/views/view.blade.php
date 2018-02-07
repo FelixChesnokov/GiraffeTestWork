@@ -16,7 +16,8 @@
             <?php if($post->author == $nameAuth) { ?>
                 <div class="text-center">
                     <a href="{!! route('edit', ['id'=>$post->id]) !!}" ><button class="btn btn-info">Edit</button></a>
-                    <input type="button" class="delete  btn btn-danger" value="Delete" rel="{{$post->id}}">
+                    <a href="{!! route('delete', ['id'=>$post->id]) !!}" ><button class="btn btn-danger">Delete</button></a>
+                    {{--<input type="button" class="delete  btn btn-danger" value="Delete" rel="{{$post->id}}">--}}
                 </div>
             <?php }?>
         </div>

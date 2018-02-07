@@ -25,8 +25,8 @@ Route::get('/', 'PostsController@welcome')->name('welcome');
 Route::get('/edit', 'PostsController@index')->name('add');
 Route::post('/edit', 'PostsController@addPostRequest');
 
-Route::delete('/delete','PostsController@deletePost')->name('delete');
 Route::get('/{id}', 'PostsController@viewPost')->where('id','\d+')->name('view');
 Route::get('/edit/{id}', 'PostsController@editPost')->where('id','\d+')->name('edit');
 Route::post('/edit/{id}', 'PostsController@editPostRequest')->where('id','\d+');
 
+Route::get('/delete/{id}','PostsController@deletePost')->where('id','\d+')->name('delete');
